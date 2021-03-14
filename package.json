@@ -1,13 +1,19 @@
 {
   "name": "gatorcom",
   "version": "1.0.0",
+  "engines": {
+    "node": "14.15.5"
+  },
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "backend": "cd backend && nodemon server.js",
+    "build": "cd frontend && npm run build",
+    "install-client": "cd frontend && npm install",
+    "heroku-postbuild" : "npm run install-client && npm run build",
+    "start": "node backend/server.js",
     "frontend": "cd frontend && npm start",
-    "dev": "concurrently -n 'backend,frontend' -c 'red,blue' \"npm run backend\" \"npm run frontend\""
+    "dev": "concurrently -n 'backend,frontend' -c 'red,blue' \"npm run start\" \"npm run frontend\""
   },
   "keywords": [],
   "author": "",
